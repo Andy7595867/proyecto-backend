@@ -11,4 +11,4 @@ const sequelize= new Sequelize(process.env.DB_NAME, process.env.DB_USER, process
     timezone: '-05:00'
 })
 
-module.exports = sequelize;e
+module.exports = sequelize;
