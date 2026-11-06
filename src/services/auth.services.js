@@ -44,8 +44,9 @@ exports.loginUser = async (email, password) => {
                 rol_id: user.rol_id,
                 permisos
             },
+            SECRET_KEY
         );
-
+        
         return token;
 
     } catch (error) {

@@ -27,7 +27,7 @@ exports.getAllProjects = async (req, res) => {
         let projects;
 
         if (req.user.rol_id === ROLES.ADMIN) {
-            projects = await projectService.getAllProjects();
+            projects = await projectService.getAllProjects(req.user.id);
         } else {
             projects = await projectService.getProjectsByUserId(req.user.id);
         }

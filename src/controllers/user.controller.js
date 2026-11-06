@@ -42,7 +42,6 @@ exports.updateUser = async (req, res) => {
             email,
             rol_id,
             administrador_id,
-            administrador_id
         );
 
         return res.status(200).json({
