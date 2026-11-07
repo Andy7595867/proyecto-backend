@@ -32,9 +32,11 @@ exports.createUser = async (req, res) => {
 // Actualizar usuario
 exports.updateUser = async (req, res) => {
     try {
+        console.log('DEBUG req.user:',req.user);
         const { nombre, email, rol_id } = req.body;
         const id = req.params.id;
         const administrador_id = req.user.id;
+
 
         const user = await userService.updateUser(
             id,
