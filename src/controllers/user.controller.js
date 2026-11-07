@@ -30,19 +30,24 @@ exports.createUser = async (req, res) => {
 };
 
 // Actualizar usuario
-exports.updateProject = async (req, res) => {
+exports.updateUser = async (req, res) => {
     try {
-        const data = {
-            id: req.params.id, // <-- Agrega esta línea
-            ...req.body,
-            administrador_id: req.user.id
-        };
+        const { nombre, email, rol_id, administrador_id } = req.body;
+        const id = req.params.id;
+        const admin_from_token = req.user.id || req.user.userId; // Toma el ID del token
 
-        const project = await projectService.updateProject(data);
+        const user = await userService.updateUser(
+            id,
+            nombre,
+            email,
+            rol_id,
+            administrador_id,
+            admin_from_token // <-- ¡Este era el sexto argumento que faltaba!
+        );
 
         return res.status(200).json({
-            message: 'Proyecto actualizado correctamente',
-            project
+            message: 'Usuario actualizado correctamente',
+            user
         });
     } catch (error) {
         return res.status(400).json({ message: error.message });

@@ -56,6 +56,7 @@ exports.getProjectById = async (req, res) => {
 exports.updateProject = async (req, res) => {
     try {
         const data = {
+            id: req.params.id, // <-- Agrega esta línea
             ...req.body,
             administrador_id: req.user.id
         };
