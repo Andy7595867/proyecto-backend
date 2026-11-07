@@ -35,9 +35,10 @@ exports.updateUser = async (id, nombre, email, rol_id, administrador_id, admin_f
             throw new Error('Usuario no encontrado');
         }
 
-        if (user.administrador_id !== admin_from_token) {
-            throw new Error('Acceso denegado, este usuario no está bajo su administración');
-        }
+     
+      if (Number(user.administrador_id) !== Number(admin_from_token)) {
+      throw new Error('Acceso denegado, este usuario no está bajo su administración');
+}
 
         if (email && email !== user.email) {
             const userExists = await User.findOne({ where: { email } });

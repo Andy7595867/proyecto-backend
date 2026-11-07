@@ -32,11 +32,9 @@ exports.createUser = async (req, res) => {
 // Actualizar usuario
 exports.updateUser = async (req, res) => {
     try {
-        console.log('DEBUG req.user:',req.user);
-        const { nombre, email, rol_id } = req.body;
+        const { nombre, email, rol_id, administrador_id } = req.body;
         const id = req.params.id;
-        const administrador_id = req.user.id;
-
+        const admin_from_token = req.user.id || req.user.userId; // Toma el ID del token
 
         const user = await userService.updateUser(
             id,
@@ -44,6 +42,7 @@ exports.updateUser = async (req, res) => {
             email,
             rol_id,
             administrador_id,
+            admin_from_token // <-- ¡Este era el sexto argumento que faltaba!
         );
 
         return res.status(200).json({
