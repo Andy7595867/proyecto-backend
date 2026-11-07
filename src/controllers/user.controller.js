@@ -42,7 +42,7 @@ exports.updateUser = async (req, res) => {
             email,
             rol_id,
             administrador_id,
-            admin_from_token // <-- ¡Este era el sexto argumento que faltaba!
+            admin_from_token 
         );
 
         return res.status(200).json({
@@ -103,3 +103,21 @@ exports.getAllUsersByRolId = async (req, res) => {
         return res.status(500).json({ message: error.message });
     }
 };
+
+exports.getAllUsersByEmail = async (req, res) => {
+    try {
+        const email = req.query.email;
+        const administrador_id = req.user.id;
+
+        const users = await userService.getAllUsersByEmail(
+            email,
+            administrador_id
+        );
+
+        return res.status(200).json(users);
+    } catch (error) {
+        return res.status(500).json({ message: error.message });
+    }
+};
+
+

@@ -108,3 +108,7 @@ exports.getAllUsersByRolId = async (rol_id) => {
     // Lógica para obtener los usuarios por rol
     return await User.findAll({ where: { rol_id } });
 };
+exports.getAllUsersByEmail = async (email) => {
+    
+  return await User.findAll({ where: {email} });  
+};

@@ -11,7 +11,7 @@ router.put('/users/update/:id', authenticateToken, checkRole([ROLES.ADMIN]), use
 router.get('/users', authenticateToken, checkRole([ROLES.ADMIN]), userController.getAllUsersByAdministradorId);
 router.delete('/users/delete/:id', authenticateToken, checkRole([ROLES.ADMIN]), userController.deleteUser);
 router.get('/users/rol/:id', authenticateToken, checkRole([ROLES.ADMIN]), userController.getAllUsersByRolId);
-
+router.get('/users/email', authenticateToken, checkRole([ROLES.ADMIN]), userController.getAllUsersByEmail);
 // Middleware para manejar errores
 router.use(errorHandler);
 

@@ -5,7 +5,7 @@ const ROLES = require('../utils/constants');
 const { authenticateToken, checkRole } = require('../middleware/auth.middleware');
 
 router.post('/projects/create', authenticateToken, checkRole([ROLES.ADMIN]), projectController.createProject);
-router.put('/projects/update/id', authenticateToken, checkRole([ROLES.ADMIN]), projectController.updateProject);
+router.put('/projects/update/:id', authenticateToken, checkRole([ROLES.ADMIN]), projectController.updateProject);
 router.delete('/projects/delete/:id', authenticateToken, checkRole([ROLES.ADMIN]), projectController.deleteProject);
 router.get('/projects', authenticateToken, checkRole([ROLES.ADMIN, ROLES.USER]), projectController.getAllProjects);
 router.get('/projects/:id', authenticateToken, checkRole([ROLES.ADMIN, ROLES.USER]), projectController.getProjectById);

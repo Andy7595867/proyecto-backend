@@ -122,8 +122,8 @@ exports.updateProject = async (data) => {
 
 // Eliminar proyecto
 exports.deleteProject = async (id, administrador_id) => {
-    const project = await Project.findOne({
-        where: { id, administrador_id }
+    const project = await Project.findOne({ 
+        where: { id }
     });
 
     if (!project) {
