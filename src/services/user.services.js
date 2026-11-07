@@ -104,3 +104,7 @@ exports.deleteUser = async (id, admin_from_token) => {
         throw new Error(`Error al eliminar el usuario: ${err.message}`);
     }
 };
+exports.getAllUsersByRolId = async (rol_id) => {
+    // Lógica para obtener los usuarios por rol
+    return await User.findAll({ where: { rol_id } });
+};
